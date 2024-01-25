@@ -437,7 +437,6 @@ public class PluginPersistentStateComponent implements PersistentStateComponent<
 			return;
 		}
 		compositeModel = Cloner.deepClone(compositeModel);
-		compositeModel.setDate(new Date());
 		compositeModel.removeEmpty();
 		ReplaceCompositeModel finalCompositeModel = compositeModel;
 		replaceHistory.removeIf(m -> Objects.equals(m.getItems(), finalCompositeModel.getItems()));

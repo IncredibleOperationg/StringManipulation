@@ -11,7 +11,7 @@ import java.util.*;
 
 public class ReplaceCompositeModel {
 	List<ReplaceItemModel> items = new ArrayList<ReplaceItemModel>();
-	Date date;
+	String name;
 
 	public ReplaceCompositeModel() {
 	}
@@ -40,17 +40,16 @@ public class ReplaceCompositeModel {
 		return document.getText();
 	}
 
-	public Date getDate() {
-		return date;
+	public String getName() {
+		return name;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public ReplaceCompositeModel(ReplaceItemModel selectedItem) {
 		add(selectedItem);
-		date = new Date();
 	}
 
 
@@ -128,8 +127,21 @@ public class ReplaceCompositeModel {
 	public String toString() {
 		return "ReplaceCompositeModel{" +
 				"items=" + items +
-				", date=" + date +
+				", name=" + name +
 				'}';
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		ReplaceCompositeModel that = (ReplaceCompositeModel) o;
+		return Objects.equals(items, that.items) && Objects.equals(name, that.name);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(items, name);
 	}
 
 	public boolean isAnyEnabledAndValid() {
